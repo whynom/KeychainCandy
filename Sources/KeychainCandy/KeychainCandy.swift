@@ -5,7 +5,7 @@ public struct KeychainCandy {
     
     public init() {}
     
-    public static func addKeychainItem(account: String, service: String, value: String) -> OSStatus {
+    public func addKeychainItem(account: String, service: String, value: String) -> OSStatus {
         
         guard let valueData = value.data(using: .utf8) else {
             return errSecParam
@@ -23,7 +23,7 @@ public struct KeychainCandy {
         return SecItemAdd(query as CFDictionary, nil)
     }
     
-    public static func getKeychainItem(account: String, service: String) -> (Int?, OSStatus) {
+    public func getKeychainItem(account: String, service: String) -> (Int?, OSStatus) {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
             kSecAttrAccount as String: account,
