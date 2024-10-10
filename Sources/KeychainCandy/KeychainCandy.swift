@@ -3,6 +3,8 @@ import Security
 
 public struct KeychainCandy {
     
+    public init() {}
+    
     public static func addKeychainItem(account: String, service: String, value: String) -> OSStatus {
         
         guard let valueData = value.data(using: .utf8) else {
